@@ -10,7 +10,7 @@ export default function Contact() {
       <div className={styles.container}>
         <div className={styles.contentWrapper}>
           <div className={styles.textSection}>
-            <h2 className={styles.heading}>Let's Connect</h2>
+            <h2 className={styles.heading}>Let&apos;s Connect</h2>
             <p className={styles.description}>
               I&apos;m always open to new opportunities, interesting projects, and collaboration. Whether you want to discuss data science, machine learning, or just have a conversation, feel free to reach out!
             </p>
