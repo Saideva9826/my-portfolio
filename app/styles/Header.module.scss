@@ -71,7 +71,7 @@
     background-color: $darkSecondary;
   }
   &:after {
-    content: "orhan";
+    content: "";
     width: auto;
     max-width: 0;
     overflow: hidden;
@@ -80,7 +80,7 @@
     transition: max-width 0.25s ease-in-out;
   }
   &.logoActive:after {
-    max-width: 6rem;
+    max-width: 0;
   }
 }
 

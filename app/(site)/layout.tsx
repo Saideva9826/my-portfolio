@@ -1,5 +1,4 @@
 import "@/app/styles/globals.scss";
-import { getMeta } from "@/sanity/sanity-utils";
 import { Metadata } from "next";
 import Script from "next/script";
 
@@ -16,58 +15,31 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   );
 }
 
-export async function generateMetadata(): Promise<Metadata> {
-  const meta = await getMeta();
-  return {
-    title: meta.title,
-    description: meta.description,
-    icons: {
-      icon: {
-        url: "/favicon.ico",
-      },
-      shortcut: { url: "/favicon.ico" },
-      apple: { url: "/apple-touch-icon.png", type: "image/png" },
+export const metadata: Metadata = {
+  title: "Saideva Goudnathi - Portfolio",
+  description: "Full Stack Developer specializing in web applications",
+  icons: {
+    icon: {
+      url: "/favicon.ico",
     },
-    manifest: "/site.webmanifest",
-    openGraph: {
-      title: meta.title,
-      description: meta.description,
-      siteName: meta.siteName,
-      type: meta.openGraphType,
-      locale: "en-US",
-      url: meta.url,
-      images: [
-        {
-          url: meta.image,
-          width: 800,
-          height: 800,
-          alt: meta.title,
-        },
-      ],
-    },
-    twitter: {
-      title: meta.title,
-      description: meta.description,
-      card: "app",
-      app: {
-        name: meta.siteName,
-        id: {
-          iphone: "twitter_app://iphone",
-          ipad: "twitter_app://ipad",
-          googleplay: "twitter_app://googleplay",
-        },
-        url: {
-          iphone: "twitter_app://iphone",
-          ipad: "twitter_app://ipad",
-        },
-      },
-      images: {
-        url: meta.image,
-        alt: meta.title,
-      },
-    },
-  };
-}
+    shortcut: { url: "/favicon.ico" },
+    apple: { url: "/apple-touch-icon.png", type: "image/png" },
+  },
+  manifest: "/site.webmanifest",
+  openGraph: {
+    title: "Saideva Goudnathi - Portfolio",
+    description: "Full Stack Developer specializing in web applications",
+    siteName: "Saideva's Portfolio",
+    type: "website",
+    locale: "en-US",
+    url: "https://saideva.com",
+  },
+  twitter: {
+    title: "Saideva Goudnathi - Portfolio",
+    description: "Full Stack Developer specializing in web applications",
+    card: "summary_large_image",
+  },
+};
 
 export const viewport = {
   width: "device-width",

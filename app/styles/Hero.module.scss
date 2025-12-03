@@ -1,6 +1,24 @@
 @use "sass:color";
 @use "variables" as *;
 
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 10px 40px rgba(240, 147, 251, 0.2);
+  }
+  50% {
+    box-shadow: 0 20px 60px rgba(240, 147, 251, 0.4);
+  }
+}
+
 .bg {
   position: relative;
   overflow: hidden;
@@ -32,7 +50,7 @@
   @include flexCenter;
   width: 100%;
   min-height: 100vh;
-  padding: 100px 0;
+  padding: 80px 0;
   overflow: hidden;
 }
 
@@ -62,17 +80,57 @@
       align-items: flex-start;
       text-align: left;
     }
-    &.laptopContainer {
+    &.imageContainer {
       align-items: flex-end;
+      justify-content: center;
     }
   }
 }
 
+.imageWrapper {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  animation: float 3s ease-in-out infinite, glow 3s ease-in-out infinite;
+  
+  @include lg {
+    width: 350px;
+    height: 350px;
+  }
+}
+
+.imageGradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.heroImage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  z-index: 2;
+}
+
 .heading {
   white-space: nowrap;
-  color: $darkPrimary;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   font-size: 2.8rem;
-  font-weight: 700;
+  font-weight: 800;
+  letter-spacing: -1px;
   @include md {
     font-size: 2.8rem;
   }

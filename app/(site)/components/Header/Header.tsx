@@ -37,7 +37,7 @@ function Header({ sections, socials }: Props) {
             onClick={() => {
               window.scrollTo({ top: 0, behavior: "smooth" });
             }}>
-            {"B"}
+            {"S"}
           </div>
         </div>
         {isMobile ? (

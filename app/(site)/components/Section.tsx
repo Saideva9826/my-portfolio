@@ -5,6 +5,7 @@ import React from "react";
 import styles from "@/app/styles/Section.module.scss";
 import Button from "./Button";
 import type { Section } from "@/types/Section";
+import { experience as staticExperience } from "@/src/content/experience";
 import { motion, Variants } from "framer-motion";
 import clsx from "clsx";
 
@@ -46,74 +47,88 @@ const Section = ({ section, children }: { section: Section; children: React.Reac
         variants={cardVariants}>
         <h2 className={styles.heading}>{section.heading}</h2>
         <div className={styles.subSectionsContainer}>
-          {section.subSections?.map((subSection) => {
-            return (
-              <div className={styles.subSection} key={subSection.name}>
-                <div
-                  className={clsx(
-                    styles.textContainer,
-                    subSection.switchOrder ? "orderSecond" : "orderFirst"
-                  )}>
-                  {subSection.heading && (
-                    <h3 className={styles.subSectionHeading}>{subSection.heading}</h3>
-                  )}
-                  <PortableText
-                    value={subSection.content}
-                    components={{
-                      marks: {
-                        link: ({ children, value }) => {
-                          const rel = !value.href.startsWith("/")
-                            ? "noopener noreferrer"
-                            : undefined;
-                          return (
-                            <a href={value.href} target="_blank" rel={rel}>
-                              {children}
-                            </a>
-                          );
+          {section.id === "experience" ? (
+            staticExperience.map((exp, idx) => (
+              <div className={styles.subSection} key={exp.company + idx}>
+                <div className={styles.textContainer}>
+                  <h3 className={styles.subSectionHeading}>{exp.title} @ {exp.company}</h3>
+                  <div><strong>{exp.location}</strong> | {exp.dates}</div>
+                  <ul>
+                    {exp.highlights.map((h, i) => <li key={i}>{h}</li>)}
+                  </ul>
+                </div>
+              </div>
+            ))
+          ) : (
+            section.subSections?.map((subSection) => {
+              return (
+                <div className={styles.subSection} key={subSection.name}>
+                  <div
+                    className={clsx(
+                      styles.textContainer,
+                      subSection.switchOrder ? "orderSecond" : "orderFirst"
+                    )}>
+                    {subSection.heading && (
+                      <h3 className={styles.subSectionHeading}>{subSection.heading}</h3>
+                    )}
+                    <PortableText
+                      value={subSection.content}
+                      components={{
+                        marks: {
+                          link: ({ children, value }) => {
+                            const rel = !value.href.startsWith("/")
+                              ? "noopener noreferrer"
+                              : undefined;
+                            return (
+                              <a href={value.href} target="_blank" rel={rel}>
+                                {children}
+                              </a>
+                            );
+                          },
                         },
-                      },
-                    }}
-                  />
-                  {subSection.buttons && (
-                    <div className={styles.buttonsContainer}>
-                      {subSection.buttons?.map((button) => (
-                        <Button
-                          key={button.text}
-                          icon={button.icon}
-                          text={button.text}
-                          link={button.link}
-                          type={button.type}
-                        />
-                      ))}
+                      }}
+                    />
+                    {subSection.buttons && (
+                      <div className={styles.buttonsContainer}>
+                        {subSection.buttons?.map((button) => (
+                          <Button
+                            key={button.text}
+                            icon={button.icon}
+                            text={button.text}
+                            link={button.link}
+                            type={button.type}
+                          />
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                  {subSection.image && (
+                    <div
+                      className={clsx(
+                        styles.image,
+                        subSection.switchOrder ? "orderFirst" : "orderSecond"
+                      )}>
+                      <Image
+                        src={subSection.image}
+                        width="1400"
+                        height="900"
+                        placeholder="blur"
+                        blurDataURL={rgbDataURL(253, 251, 250)}
+                        alt={subSection.imageAlt}
+                        sizes="(max-width: 768px) 100vw,
+                          (max-width: 1200px) 50vw,
+                          33vw"
+                        style={{
+                          width: "100%",
+                          height: "auto",
+                        }}
+                      />
                     </div>
                   )}
                 </div>
-                {subSection.image && (
-                  <div
-                    className={clsx(
-                      styles.image,
-                      subSection.switchOrder ? "orderFirst" : "orderSecond"
-                    )}>
-                    <Image
-                      src={subSection.image}
-                      width="1400"
-                      height="900"
-                      placeholder="blur"
-                      blurDataURL={rgbDataURL(253, 251, 250)}
-                      alt={subSection.imageAlt}
-                      sizes="(max-width: 768px) 100vw,
-                        (max-width: 1200px) 50vw,
-                        33vw"
-                      style={{
-                        width: "100%",
-                        height: "auto",
-                      }}
-                    />
-                  </div>
-                )}
-              </div>
-            );
-          })}
+              );
+            })
+          )}
         </div>
         {children}
       </motion.div>

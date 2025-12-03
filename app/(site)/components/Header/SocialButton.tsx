@@ -5,11 +5,14 @@ import { Social } from "@/types/Social";
 
 function SocialButton({ social }: { social: Social }) {
   if (!social) return null;
+  
+  const href = social.name === "Email" ? `mailto:${social.link}` : social.link;
+  
   return (
     <a
-      href={social.id === "email" ? `mailto:${social.link}` : social.link}
-      target="_blank"
-      rel="noreferrer"
+      href={href}
+      target={social.name === "Email" ? undefined : "_blank"}
+      rel={social.name === "Email" ? undefined : "noreferrer"}
       title={social.name}
       className={styles.socialButton}>
       <DynamicIcon name={social.icon} />

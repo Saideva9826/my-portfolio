@@ -10,6 +10,8 @@ export interface Project extends ProjectBody {
 export type ProjectBody = {
   title: string;
   description: string;
+  summary?: string;
+  impact?: string[];
   link?: string;
   github?: string;
   previewImage: string;

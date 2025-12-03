@@ -4,32 +4,30 @@ import styles from "@/app/styles/Hero.module.scss";
 import SVGShape from "./SVGShape";
 import Button from "./Button";
 import { PortableText } from "@portabletext/react";
-import Laptop from "./Laptop";
-import { SectionBody } from "@/types/Section";
+import Image from "next/image";
+import { profile } from "@/src/content/profile";
 import { motion, Variants } from "framer-motion";
 
-interface HeroProps {
-  section: SectionBody;
-}
+// No props needed, use static profile
 
-const animationVariants: Variants = {
-  initial: {
-    y: 100,
-    opacity: 0,
-  },
-  whileInView: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      duration: 0.8,
-      ease: "easeOut",
+export default function Hero() {
+  const animationVariants: Variants = {
+    initial: {
+      y: 100,
+      opacity: 0,
     },
-  },
-};
+    whileInView: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.8,
+        ease: "easeOut",
+      },
+    },
+  };
 
-function Hero({ section }: HeroProps) {
   return (
-    <div className={styles.bg} id={section.id}>
+    <div className={styles.bg} id="hero">
       <div className={styles.wrapper}>
         <div className={styles.container}>
           <motion.div
@@ -37,31 +35,51 @@ function Hero({ section }: HeroProps) {
             initial="initial"
             whileInView="whileInView"
             viewport={{ once: true }}
-            variants={animationVariants}>
+            variants={animationVariants}
+          >
             <div className={styles.subHeading}>
-              <span>
-                <PortableText value={section.subSections[0].content} />
-              </span>
+              <span>{profile.title}</span>
             </div>
-            <h1 className={styles.heading}>{section.heading}</h1>
+            <h1 className={styles.heading}>{profile.name}</h1>
             <div className={styles.subHeading}>
-              <PortableText value={section.subSections[1].content} />
+              <span>{profile.summary}</span>
             </div>
             <div className={styles.buttonsContainer}>
-              {section.subSections[1].buttons?.map((button) => (
-                <Button
-                  key={button.text}
-                  icon={button.icon}
-                  text={button.text}
-                  link={button.link}
-                  type={button.type}
-                />
-              ))}
+              <Button
+                key="Resume"
+                icon="resume"
+                text="Resume"
+                link="/resume.pdf"
+                type="primary"
+              />
+              <Button
+                key="LinkedIn"
+                icon="linkedin"
+                text="LinkedIn"
+                link={profile.contact.linkedin}
+                type="secondary"
+              />
             </div>
           </motion.div>
-          <div className={`${styles.containerItem} ${styles.laptopContainer}`}>
-            <Laptop />
-          </div>
+          <motion.div 
+            className={`${styles.containerItem} ${styles.imageContainer}`}
+            initial="initial"
+            whileInView="whileInView"
+            viewport={{ once: true }}
+            variants={animationVariants}
+          >
+            <div className={styles.imageWrapper}>
+              <div className={styles.imageGradient} />
+              <Image
+                src="/saideva.svg"
+                alt={profile.name}
+                width={300}
+                height={300}
+                priority
+                className={styles.heroImage}
+              />
+            </div>
+          </motion.div>
         </div>
       </div>
       <SVGShape />
@@ -69,4 +87,3 @@ function Hero({ section }: HeroProps) {
   );
 }
 
-export default Hero;

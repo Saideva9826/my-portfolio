@@ -17,6 +17,19 @@ import {
   FaChevronDown,
   FaLinkedin,
   FaAws,
+  FaFileDownload,
+  FaDatabase,
+  FaBrain,
+  FaCode,
+  FaTable,
+  FaChartLine,
+  FaChartBar,
+  FaAlignLeft,
+  FaTerminal,
+  FaLightbulb,
+  FaNetworkWired,
+  FaServer,
+  FaStream,
 } from "react-icons/fa";
 import { IoLogoCss3, IoMdConstruct, IoMdPause } from "react-icons/io";
 import {
@@ -38,6 +51,9 @@ import {
   SiKubernetes,
   SiGithubactions,
   SiTerraform,
+  SiTensorflow,
+  SiFlask,
+  SiHuggingface,
 } from "react-icons/si";
 import { DiRedis } from "react-icons/di";
 import { GrStatusUnknown } from "react-icons/gr";
@@ -49,6 +65,7 @@ import { VscDebugBreakpointData } from "react-icons/vsc";
 const iconMap = {
   externalLink: BiLinkExternal,
   link: FaLink,
+  resume: FaFileDownload,
   Completed: ImCheckmark,
   "In Development": IoMdConstruct,
   "On Hold": IoMdPause,
@@ -93,6 +110,22 @@ const iconMap = {
   githubActions: SiGithubactions,
   terraform: SiTerraform,
   aws: FaAws,
+  database: FaDatabase,
+  javascript: SiJavascript,
+  typescript: SiTypescript,
+  terminal: FaTerminal,
+  brain: FaBrain,
+  tensorflow: SiTensorflow,
+  flask: SiFlask,
+  table: FaTable,
+  chart: FaChartLine,
+  "chart-bar": FaChartBar,
+  code: FaCode,
+  type: FaAlignLeft,
+  zap: FaLightbulb,
+  api: FaNetworkWired,
+  server: FaServer,
+  flow: FaStream,
 };
 
 interface DynamicIconProps extends React.SVGProps<SVGSVGElement> {

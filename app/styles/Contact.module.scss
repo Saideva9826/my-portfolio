@@ -1,0 +1,173 @@
+@use "sass:color";
+@use "variables" as *;
+
+.wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 4rem 0;
+  background: linear-gradient(135deg, rgba($primary, 0.05) 0%, rgba($secondary, 0.05) 100%);
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  max-width: 700px;
+  width: 100%;
+  padding: 3rem 2rem;
+}
+
+.contentWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.5rem;
+  width: 100%;
+  border-radius: $borderRadius;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(10px);
+  padding: 2.5rem;
+  border: 1px solid rgba($primary, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+
+  @include md {
+    padding: 3rem;
+  }
+}
+
+.textSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+}
+
+.heading {
+  font-size: 2rem;
+  font-weight: 700;
+  color: $darkPrimary;
+  margin: 0;
+  text-align: center;
+
+  @include md {
+    font-size: 2.2rem;
+  }
+}
+
+.description {
+  text-align: center;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: rgba($darkPrimary, 0.8);
+  margin: 0;
+  padding: 0;
+
+  @include md {
+    font-size: 1.1rem;
+  }
+}
+
+.buttonsContainer {
+  display: flex;
+  gap: 1.25rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+
+  @include md {
+    gap: 1.5rem;
+  }
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1.75rem;
+  border-radius: $borderRadius;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  white-space: nowrap;
+  color: white;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  }
+
+  &:active {
+    transform: translateY(-1px);
+  }
+
+  @include md {
+    padding: 1.1rem 2rem;
+    font-size: 1.05rem;
+  }
+}
+
+.emailButton {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+
+  &:hover {
+    box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+  }
+}
+
+.linkedinButton {
+  background: linear-gradient(135deg, #0A66C2 0%, #0952a1 100%);
+
+  &:hover {
+    box-shadow: 0 8px 20px rgba(10, 102, 194, 0.4);
+  }
+}
+
+.buttonIcon {
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 480px) {
+  .wrapper {
+    padding: 2rem 0;
+  }
+
+  .container {
+    padding: 1.5rem;
+    gap: 1.5rem;
+  }
+
+  .contentWrapper {
+    padding: 1.75rem;
+    gap: 2rem;
+  }
+
+  .heading {
+    font-size: 1.6rem;
+  }
+
+  .buttonsContainer {
+    gap: 1rem;
+  }
+
+  .button {
+    padding: 0.9rem 1.5rem;
+    font-size: 0.95rem;
+    flex: 1;
+    min-width: 140px;
+  }
+
+  .description {
+    font-size: 1rem;
+  }
+}
+

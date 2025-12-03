@@ -26,7 +26,7 @@ function DesktopMenu({ menuData, socials }: Props) {
       </div>
       <div className={styles.socialsContainer}>
         {socials?.map((social: Social) => {
-          return <SocialButton key={social.id} social={social} />;
+          return <SocialButton key={social._id} social={social} />;
         })}
       </div>
     </>

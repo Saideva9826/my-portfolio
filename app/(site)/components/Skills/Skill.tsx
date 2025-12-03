@@ -27,9 +27,10 @@ function Skill({ skill }: { skill: Skill }) {
     <div
       className={styles.skillTag}
       style={{
-        backgroundColor: skill.color ? `#${skill.color}35` : undefined,
-        color: skill.color ? darkenColor(`#${skill.color}`, 0.3) : undefined,
-        borderColor: skill.color ? `${darkenColor(`#${skill.color}`, 0.3)}80` : undefined,
+        backgroundColor: skill.color ? skill.color : undefined,
+        color: "#ffffff",
+        borderColor: skill.color ? darkenColor(`#${skill.color}`, 0.2) : undefined,
+        boxShadow: skill.color ? `0 4px 12px ${skill.color}40` : undefined,
       }}>
       <DynamicIcon name={skill.icon} className={styles.skillIcon} />
       <span className={styles.skillName}>{skill.name}</span>

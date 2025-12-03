@@ -1,7 +1,17 @@
+"use client";
+
 import React from "react";
 import styles from "../../styles/Footer.module.scss";
+import { profile } from "@/src/content/profile";
 
 function Footer() {
+  const socials = [
+    { name: "GitHub", url: "https://github.com/Saideva9826", icon: "github" },
+    { name: "LinkedIn", url: "https://www.linkedin.com/in/saideva-goudnathi/", icon: "linkedin" },
+    { name: "Twitter", url: "https://twitter.com", icon: "twitter" },
+    { name: "Email", url: "mailto:saideva.goudnathi@gmail.com", icon: "mail" },
+  ];
+
   return (
     <>
       <svg
@@ -65,9 +75,58 @@ function Footer() {
         </g>
       </svg>
       <footer className={styles.footer}>
-        <span className={styles.logo}>{"B"}</span>
-        <span>{"Crafted with Code & Passion."}</span>
-        <span>© {new Date().getFullYear()} Borhan Saflo. All rights reserved.</span>
+        <div style={{ marginBottom: "1.5rem" }}>
+          <span className={styles.logo}>{"S"}</span>
+        </div>
+        <div style={{ marginBottom: "1rem" }}>
+          <span>{"Crafted with Code & Passion."}</span>
+        </div>
+        <div style={{ marginBottom: "1rem", display: "flex", gap: "1rem", justifyContent: "center" }}>
+          {socials.map((social) => (
+            <a
+              key={social.name}
+              href={social.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              title={social.name}
+              style={{
+                display: "inline-block",
+                width: "32px",
+                height: "32px",
+                lineHeight: "32px",
+                textAlign: "center" as const,
+                borderRadius: "50%",
+                backgroundColor: "#f59e0b",
+                color: "#1f1c17",
+                textDecoration: "none",
+                fontWeight: 500,
+                transition: "all 0.3s ease",
+              }}
+              onMouseEnter={(e) => {
+                (e.target as HTMLElement).style.transform = "scale(1.1)";
+                (e.target as HTMLElement).style.backgroundColor = "#1f1c17";
+                (e.target as HTMLElement).style.color = "#f59e0b";
+              }}
+              onMouseLeave={(e) => {
+                (e.target as HTMLElement).style.transform = "scale(1)";
+                (e.target as HTMLElement).style.backgroundColor = "#f59e0b";
+                (e.target as HTMLElement).style.color = "#1f1c17";
+              }}>
+              {social.icon === "github" && "𝙶"}
+              {social.icon === "linkedin" && "𝙻"}
+              {social.icon === "twitter" && "𝚃"}
+              {social.icon === "mail" && "✉"}
+            </a>
+          ))}
+        </div>
+        <span style={{ fontSize: "0.875rem", color: "#666" }}>
+          © 2025 {profile.name}. All rights reserved.<br />
+          <a href={`mailto:${profile.contact.email}`} style={{ color: "inherit", textDecoration: "none" }}>
+            {profile.contact.email}
+          </a>
+          {" | "}
+          {profile.contact.phone}
+        </span>
       </footer>
     </>
   );

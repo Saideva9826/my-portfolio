@@ -42,7 +42,7 @@ function MobileMenu({ menuData, isOpen, socials, currentSection, toggleMobileMen
         <div className={styles.mobileSocialsContainer}>
           <div className={styles.socialsContainer}>
             {socials?.map((social: Social) => {
-              return <SocialButton key={social.id} social={social} />;
+              return <SocialButton key={social._id} social={social} />;
             })}
           </div>
         </div>
